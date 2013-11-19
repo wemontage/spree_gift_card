@@ -8,7 +8,7 @@ Spree::Order.class_eval do
     finalize_without_gift_card!
     # Send out emails for any newly purchased gift cards.
     self.line_items.each do |li|
-      Spree::OrderMailer.gift_card_email(li.gift_card.id, self).deliver if li.gift_card
+      Spree::OrderMailer.delay.gift_card_email(li.gift_card.id, self) if li.gift_card
     end
     # Record any gift card redemptions.
     self.adjustments.where(originator_type: 'Spree::GiftCard').each do |adjustment|
