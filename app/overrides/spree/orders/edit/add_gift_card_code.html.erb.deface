@@ -1,0 +1,5 @@
+<!-- insert_after '[data-hook="coupon_code"]' -->
+
+<div class="span3">
+  <%= order_form.text_field :gift_code, value: nil, placeholder: 'e-Gift Card Code', class: 'input-block-level', style: 'margin-bottom: 5px' %>
+</div>
